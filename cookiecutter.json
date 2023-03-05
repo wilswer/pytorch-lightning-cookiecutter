@@ -1,7 +1,8 @@
 {
     "full_name": "Wilhelm Söderkvist Vermelin",
     "email": "wilhelm.wermelin@gmail.com",
-    "project_name": "Cookiecutter Template PyTorch Lightning",
-    "package_name": "cookiecutter-template-pytorch-lightning",
+    "project_name": "PyTorch Lightning Cookiecutter",
+    "folder_name": "pytorch_lightning_cookiecutter",
+    "package_name": "cookiecutter_pytorch_lightning",
     "project_short_description": "Cookiecutter template for PyTorch Lightning Projects"
 }
