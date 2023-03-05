@@ -12,12 +12,12 @@ PIP = $(VENV)/bin/pip
 
 # Create the virtual environment
 $(VENV):
-    python{{ cookiecutter.python_major_version }}.{{ cookiecutter.python_minor_version }} -m venv $(VENV)
+	python{{ cookiecutter.python_major_version }}.{{ cookiecutter.python_minor_version }} -m venv $(VENV)
 
 # Install requirements using pip
 install: $(VENV)
-    $(PIP) install -e .
+	$(PIP) install -e .
 
 # Clean up the virtual environment
 clean:
-    rm -r $(VENV)
+	rm -r $(VENV)
