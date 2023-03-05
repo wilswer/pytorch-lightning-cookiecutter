@@ -26,7 +26,7 @@ def train(
     learning_rate: float = LEARNING_RATE,
     debug: bool = DEBUG,
 ) -> None:
-    """Train an autoregressive model.
+    """Train a PyTorch Lightning model.
     Args:
         gpus (int): Number of GPUs to use. Defaults to 7.
         epochs (int): Number of epochs to train. Defaults to 10.
@@ -52,7 +52,7 @@ MODEL_PATH = typer.Option(None, help="Path to model checkpoint")
 def evaluate(
     model_path: Optional[str] = MODEL_PATH,
 ) -> None:
-    """Evaluate an autoregressive model.
+    """Evaluate a Pytorch Lightning model.
     Args:
         model_path (str, optional): Path to model. Defaults to None.
     Raises
