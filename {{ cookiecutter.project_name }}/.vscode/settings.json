@@ -1,0 +1,6 @@
+{
+    "python.linting.mypyEnabled": true,
+    "ruff.path": [
+        "venv/bin/ruff"
+    ],
+}
