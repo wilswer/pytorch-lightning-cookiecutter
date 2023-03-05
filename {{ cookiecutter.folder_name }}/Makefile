@@ -18,6 +18,10 @@ $(VENV):
 install: $(VENV)
 	$(PIP) install -e .
 
+# Install development requirements using pip
+dev-install: $(VENV)
+	$(PIP) install -e ".[dev]"
+
 # Clean up the virtual environment
 clean:
 	rm -r $(VENV)
