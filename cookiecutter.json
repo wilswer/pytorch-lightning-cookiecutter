@@ -4,5 +4,7 @@
     "project_name": "PyTorch Lightning Cookiecutter",
     "folder_name": "pytorch_lightning_cookiecutter",
     "package_name": "cookiecutter_pytorch_lightning",
-    "project_short_description": "Cookiecutter template for PyTorch Lightning Projects"
+    "project_short_description": "Cookiecutter template for PyTorch Lightning Projects",
+    "python_major_version": "3",
+    "python_minor_version": "10"
 }
