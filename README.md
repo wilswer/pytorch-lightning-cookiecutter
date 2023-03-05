@@ -11,5 +11,5 @@ pip install cookiecutter
 then run:
 
 ```bash
-cookiecutter gh:wilswer/cookiecutter-pytorch-lightning
+cookiecutter gh:wilswer/pytorch-lightning-cookiecutter
 ```
