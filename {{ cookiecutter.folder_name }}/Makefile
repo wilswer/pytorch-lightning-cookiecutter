@@ -21,8 +21,6 @@ install: $(VENV)
 # Install development requirements using pip
 dev-install: $(VENV)
 	$(PIP) install -e ".[dev]"
-	pre-commit install
-	pre-commit autoupdate
 
 # Clean up the virtual environment
 clean:
