@@ -16,7 +16,7 @@ def train(
     learning_rate: float = 0.001,
     debug: bool = False,
 ) -> None:
-    """Train the dense model.
+    """Train the lightning model.
 
     Args:
         n_gpus (int, optional): Number of GPUs to use. Defaults to 7.
