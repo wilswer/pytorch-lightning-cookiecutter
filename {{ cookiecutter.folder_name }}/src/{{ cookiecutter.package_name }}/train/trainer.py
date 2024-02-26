@@ -34,7 +34,7 @@ def train(
     model_dir = os.path.join(root_dir, "models")
     if not os.path.exists(model_dir):
         raise ValueError(f"Model directory {model_dir} does not exist.")
-    model_checkpoint = ModelCheckpoint(
+    checkpoint_callback = ModelCheckpoint(
         dirpath=model_dir,
         filename="model_name-{epoch:003d}-{val_loss:.5f}-{step}",
         save_top_k=5,
@@ -51,21 +51,12 @@ def train(
     )
     if debug:
         trainer = pl.Trainer(fast_dev_run=True, gpus=None)
-    if n_gpus == 1:
+    if n_gpus > 1:
         trainer = pl.Trainer(
             default_root_dir=model_dir,
             accelerator="gpu",
             devices=n_gpus,
             max_epochs=n_epochs,
-            callbacks=[lr_monitor, model_checkpoint],
-        )
-    elif n_gpus > 1:
-        trainer = pl.Trainer(
-            default_root_dir=model_dir,
-            accelerator="gpu",
-            devices=n_gpus,
-            max_epochs=n_epochs,
-            strategy="ddp_find_unused_parameters_false",
             callbacks=[lr_monitor, model_checkpoint],
         )
     else:

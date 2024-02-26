@@ -4,7 +4,8 @@ import os
 from typing import TypedDict
 
 import pytorch_lightning as pl
-from torch.utils.data import DataLoader
+import torch
+from torch.utils.data import DataLoader, random_split
 
 from {{ cookiecutter.package_name }}.data.dataset import TorchDataset
 
@@ -24,6 +25,7 @@ class LitDataModule(pl.LightningDataModule):
         self,
         batch_size: int,
         num_workers: int | None = None,
+        seed: int | None = None,
     ) -> None:
         super().__init__()
         num_workers = os.cpu_count() if num_workers is None else num_workers
@@ -34,12 +36,14 @@ class LitDataModule(pl.LightningDataModule):
             num_workers=num_workers,
             pin_memory=True,
         )
+        self.dataset = TorchDataset()
+        self.seed = seed
 
     def setup(self, stage: str | None = None) -> None:
         """Train, validation, and test datasets setup."""
-        self.train_dataset = TorchDataset()
-        self.train_dataset = TorchDataset()
-        self.train_dataset = TorchDataset()
+        self.train_dataset, self.val_dataset, self.test_dataset = random_split(
+            self.dataset, [0.7, 0.1, 0.2], generator=torch.Generator().manual_seed(self.seed)
+        )
 
     def train_dataloader(self) -> DataLoader:
         """Train DataLoader."""
@@ -60,7 +64,7 @@ class LitDataModule(pl.LightningDataModule):
     def test_dataloader(self) -> DataLoader:
         """Test DataLoader."""
         return DataLoader(
-            self.test_data,
+            self.test_dataset,
             shuffle=False,
             **self.loader_args,
         )
