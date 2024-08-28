@@ -16,11 +16,18 @@ $(VENV):
 
 # Install requirements using pip
 install: $(VENV)
-	$(PIP) install -e .
+	$(PIP) install uv
+	uv pip install light-the-torch
+	ltt install torch
+	uv pip install -e .
 
 # Install development requirements using pip
 dev-install: $(VENV)
-	$(PIP) install -e ".[dev]"
+	$(PIP) install uv
+	uv pip install light-the-torch
+	ltt install torch
+	uv pip install -e .
+	uv pip install -e ".[dev]"
 
 # Clean up the virtual environment
 clean:
