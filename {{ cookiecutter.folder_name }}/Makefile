@@ -6,6 +6,8 @@ VENV = venv
 # Define commands
 PYTHON = $(VENV)/bin/python
 PIP = $(VENV)/bin/pip
+UV = $(VENV)/bin/uv
+LTT = $(VENV)/bin/ltt
 
 # Define targets
 .PHONY: install clean
@@ -17,19 +19,17 @@ $(VENV):
 # Install requirements using pip
 install: $(VENV)
 	$(PIP) install uv
-	source ./venv/bin/activate
-	uv pip install light-the-torch
-	ltt install torch
-	uv pip install -e .
+	$(UV) pip install light-the-torch
+	$(LTT) install torch
+	$(UV) pip install -e .
 
 # Install development requirements using pip
 dev-install: $(VENV)
 	$(PIP) install uv
 	source ./venv/bin/activate
-	uv pip install light-the-torch
-	ltt install torch
-	uv pip install -e .
-	uv pip install -e ".[dev]"
+	$(UV) pip install light-the-torch
+	$(LTT) install torch
+	$(UV) pip install -e ".[dev]"
 
 # Clean up the virtual environment
 clean:
