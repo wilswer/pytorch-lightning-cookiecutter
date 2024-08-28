@@ -17,6 +17,7 @@ $(VENV):
 # Install requirements using pip
 install: $(VENV)
 	$(PIP) install uv
+	source ./venv/bin/activate
 	uv pip install light-the-torch
 	ltt install torch
 	uv pip install -e .
@@ -24,6 +25,7 @@ install: $(VENV)
 # Install development requirements using pip
 dev-install: $(VENV)
 	$(PIP) install uv
+	source ./venv/bin/activate
 	uv pip install light-the-torch
 	ltt install torch
 	uv pip install -e .
